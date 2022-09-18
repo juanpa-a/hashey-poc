@@ -1,8 +1,6 @@
 package main
 
 import (
-	// "hashey/hello"
-	"fmt"
 	"log"
 
 	"github.com/pocketbase/pocketbase"
@@ -16,7 +14,7 @@ func main() {
 
 	app.OnModelBeforeCreate().Add(func(e *core.ModelEvent) error {
 		if e.Model.TableName() == "transaction" {
-			fmt.Println("triggering transaction enqueue...")
+			log.Println("triggering transaction enqueue...")
 			events.EnqueueTx()
 		}
 		return nil
